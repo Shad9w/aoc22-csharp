@@ -30,7 +30,6 @@ for (int i = 0; i < lines.Length; i++)
                 }
             }
         }
-
     }
 
     // empty line
@@ -55,6 +54,7 @@ for (int i = 0; i < lines.Length; i++)
     }
 }
 
+// result
 for(int i = 0; i < total_lines; i++)
 {
     Console.Write(myList[i].First());
