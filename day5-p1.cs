@@ -1,5 +1,5 @@
 // Read file
-string[] lines = File.ReadAllLines("../../../day6.txt");
+string[] lines = File.ReadAllLines("../../../day5.txt");
 
 bool moving = false;
 
@@ -28,7 +28,6 @@ for (int i = 0; i < lines.Length; i++)
                 {
                     myList[(idx - 1)/4].Add(lines[i][idx].ToString());
                 }
-
             }
         }
 
