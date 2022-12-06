@@ -1,3 +1,6 @@
+// Part
+int part = 1;
+
 // Read file
 string[] lines = File.ReadAllLines("../../../day5.txt");
 
@@ -12,8 +15,6 @@ for (int i = 0; i < total_lines; i++)
 {
     myList[i] = new List<string>();
 }
-
-
 
 for (int i = 0; i < lines.Length; i++)
 {
@@ -44,17 +45,37 @@ for (int i = 0; i < lines.Length; i++)
         string[] moves = lines[i].Split(" ");
 
         // 1 - how many, 3 - from, 5 - to
-        for(int m = 0; m < int.Parse(moves[1]); m++)
+        int how_many = int.Parse(moves[1]);
+        int from = int.Parse(moves[3]) - 1;
+        int to = int.Parse(moves[5]) - 1;
+
+        // part 1
+        if (part == 1)
         {
-            myList[int.Parse(moves[5]) - 1].Insert(0, myList[int.Parse(moves[3]) - 1].First());
-            myList[int.Parse(moves[3]) - 1].RemoveAt(0);
+
+            for (int m = 0; m < how_many; m++)
+            {
+                myList[to].Insert(0, myList[from].First());
+                myList[from].RemoveAt(0);
+            }
         }
 
+        // part 2
+        else
+        {
+            for (int m = 0; m < how_many; m++)
+            {
+                if (myList[from].Count > how_many - 1 - m)
+                {
+                    myList[to].Insert(0, myList[from][how_many - 1 - m]);
+                    myList[from].RemoveAt(how_many - 1 - m);
+                }
+            }
+        }
 
     }
 }
 
-// result
 for(int i = 0; i < total_lines; i++)
 {
     Console.Write(myList[i].First());
